@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  expiration_month: 1
+  expiration_year: 1
+  bank_account_id: 
+
+two:
+  number: MyString
+  expiration_month: 1
+  expiration_year: 1
+  bank_account_id: 
