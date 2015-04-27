@@ -1,2 +1,17 @@
-<h1>Clients#edit</h1>
-<p>Find me in app/views/clients/edit.html.erb</p>
+<h1>Editar Cliente</h1>
+<%= form_for @client do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :age %>
+    <%= f.text_field :age %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+<p>
+  <%= link_to "Borrar", @client, method: :delete, data: { confirm: "Seguro?" } %>
+</p>
