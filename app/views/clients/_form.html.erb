@@ -1,0 +1,14 @@
+<%= render partial: "shared/errors", locals: {obj: @client} %>
+<%= form_for @client do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :age %>
+    <%= f.text_field :age %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
