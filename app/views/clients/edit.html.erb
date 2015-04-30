@@ -1,17 +1,5 @@
 <h1>Editar Cliente</h1>
-<%= form_for @client do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div>
-    <%= f.label :age %>
-    <%= f.text_field :age %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+<%= render "form" %>
 <p>
   <%= link_to "Borrar", @client, method: :delete, data: { confirm: "Seguro?" } %>
 </p>

@@ -1,0 +1,14 @@
+<h1>Cuenta Bancaria #<%= @account.id %></h2>
+<p>
+  <strong>Cliente: </strong>
+  <%= @account.client.name %>
+</p>
+<p>
+  <strong>Balance: </strong>
+  <%= @account.balance %>
+</p>
+<p>
+  <strong>Currency: </strong>
+  <%= @account.currency %>
+</p>
+<%= link_to "Cuentas Bancarias", bank_accounts_path %>

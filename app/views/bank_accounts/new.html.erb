@@ -1,0 +1,18 @@
+<h1>Nueva Cuenta Bancaria</h1>
+<%= form_for @account do |f| %>
+  <div>
+    <%= f.label :client_id, "Cliente ID" %>
+    <%= f.select :client_id, Client.pluck(:name, :id) %>
+  </div>
+  <div>
+    <%= f.label :balance %>
+    <%= f.text_field :balance %>
+  </div>
+  <div>
+    <%= f.label :currency %>
+    <%= f.select :currency, currency_availables %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
