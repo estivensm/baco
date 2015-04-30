@@ -8,14 +8,7 @@
       <th>Balance</th>
       <th>Currency</th>
     </tr>
-    <% @accounts.each do |account| %>
-      <tr>
-        <td><%= link_to account.id, account %></td>
-        <td><%= account.client.name %></td>
-        <td><%= account.balance %></td>
-        <td><%= account.currency %></td>
-      </tr>
-    <% end %>
+    <%= render partial: "bank_account", collection: @accounts, as: :account %>
   </table>
 <% else %>
   <em>No hay ninguna cuenta creada</em>
