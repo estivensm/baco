@@ -1,0 +1,12 @@
+<h1>Mis Cuentas Bancarias</h1>
+<h2>Listado</h2>
+<table border="1">
+  <tr>
+    <th>Id</th>
+    <th>Cliente</th>
+    <th>Balance</th>
+    <th>Currency</th>
+  </tr>
+  <%= render partial: "bank_accounts/bank_account", collection: @accounts, as: :account %>
+</table>
+<%= link_to "Regresar", @client %>

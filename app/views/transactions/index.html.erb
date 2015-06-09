@@ -1,0 +1,12 @@
+<h1>Transacciones de la Cuenta Bancaria <%= @bank_account.id %></h1>
+<table border="1">
+  <tr>
+    <th>Hecho Por:</th>
+    <th>Tipo</th>
+    <th>Monto</th>
+    <th>Hecho en</th>
+    <th></th>
+  </tr>
+  <%= render @transactions %>
+</table>
+<%= link_to "Regresar", @bank_account %>

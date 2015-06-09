@@ -1,0 +1,20 @@
+<h1><%= @label %></h1>
+<p>Transaccion nueva para cuenta #<%= @bank_account.id %></p>
+<%= render partial: "shared/errors", locals: {obj: @transaction} %>
+<%= form_for [@bank_account, @transaction] do |f| %>
+  <div>
+    <%= f.hidden_field :label %>
+  </div>
+  <div>
+    <%= f.label :responsible, "Responsable" %>
+    <%= f.text_field :responsible %>
+  </div>
+   <div>
+    <%= f.label :amount, "Monto" %>
+    <%= f.text_field :amount %>
+  </div>
+   <div>
+    <%= f.submit @label %>
+  </div>
+<% end %>
+<%= link_to "Cancelar", @bank_account %>

@@ -1,0 +1,7 @@
+<tr>
+  <td><%= transaction.responsible %></td>
+  <td><%= transaction.label %></td>
+  <td><%= transaction.amount_decorado %></td>
+  <td><%= transaction.creacion_decorada %></td>
+  <td><%= link_to "Eliminar", transaction, method: :delete, data:{ confirm: "Seguro?" } %></td>
+</tr>
