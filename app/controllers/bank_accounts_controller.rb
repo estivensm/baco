@@ -22,6 +22,11 @@ class BankAccountsController < ApplicationController
     end
   end
 
+  def rates
+    BankAccount.generar_intereses
+    redirect_to bank_accounts_path
+  end
+
   protected
 
     def account_params

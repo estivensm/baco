@@ -13,3 +13,5 @@
 </p>
 <%= link_to "Cuentas Bancarias", bank_accounts_path %>
 <%= link_to "Transacciones", bank_account_transactions_path(@account) %>
+<%= link_to "Depositar", new_bank_account_transaction_path(@account, label: "Deposito") %>
+<%= link_to "Retirar", new_bank_account_transaction_path(@account, label: "Retiro") %>

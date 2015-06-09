@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  before_action :get_client, only: [:show, :edit, :destroy, :update]
+  before_action :get_client, only: [:show, :edit, :destroy, :update, :accounts]
 
   def index
     @clients = Client.order(:name)
@@ -36,6 +36,10 @@ class ClientsController < ApplicationController
   def destroy
     @client.destroy
     redirect_to clients_path
+  end
+
+  def accounts
+    @accounts = @client.bank_accounts
   end
 
   private
