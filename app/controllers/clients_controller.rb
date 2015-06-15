@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   before_action :get_client, only: [:show, :edit, :destroy, :update, :accounts]
 
   def index
-    @clients = Client.order(:name)
+    @clients = Client.order(:full_name)
   end
 
   def show
@@ -48,6 +48,6 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:name, :age)
+      params.require(:client).permit(:full_name, :birth_at, :email, :phone)
     end
 end

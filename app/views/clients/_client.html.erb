@@ -1,6 +1,11 @@
 <tr>
   <td><%= link_to client.id, client %></td>
-  <td><%= client.name %></td>
-  <td><%= client.age %></td>
+  <td><%= client.full_name %></td>
+  <td><%= client.birth_decorado %></td>
+  <td>
+    <% if client.email.present? %>
+      <%= mail_to client.email, "Envia Correo" %>
+    <% end %>
+  </td>
   <td><%= client.bank_accounts.count %></td>
 </tr>
