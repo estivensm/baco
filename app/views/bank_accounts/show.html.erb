@@ -1,7 +1,7 @@
 <h1>Cuenta Bancaria #<%= @account.id %></h2>
 <p>
   <strong>Cliente: </strong>
-  <%= @account.client.name %>
+  <%= @account.client.full_name %>
 </p>
 <p>
   <strong>Balance: </strong>
@@ -10,6 +10,14 @@
 <p>
   <strong>Currency: </strong>
   <%= @account.currency %>
+</p>
+<p>
+  <strong>Tipo: </strong>
+  <%= @account.account_type %>
+</p>
+<p>
+  <strong>Tasa Interes: </strong>
+  <%= @account.rate_decorado %>
 </p>
 <%= link_to "Cuentas Bancarias", bank_accounts_path %>
 <%= link_to "Transacciones", bank_account_transactions_path(@account) %>

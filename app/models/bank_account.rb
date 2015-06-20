@@ -5,6 +5,7 @@ class BankAccount < ActiveRecord::Base
 
   validates_presence_of :currency
   validates_numericality_of :balance, greater_than_or_equal_to: 0
+  before_save :set_rate_segun_tipo
 
   def depositar(monto)
     self.balance = self.balance + monto
@@ -20,5 +21,24 @@ class BankAccount < ActiveRecord::Base
       account.balance = account.balance + account.balance * 0.05
       account.save
     end
+  end
+
+  def rate_decorado
+    "#{rate*100}%"
+  end
+
+  def set_rate_segun_tipo
+    puts "SE LLAMO EL SET RATE para #{self.account_type}"
+    case self.account_type
+    when "Normal"
+      self.rate = 0.02
+    when "Vip"
+      self.rate = 0.05
+    when "Plazo"
+      self.rate = 0.1
+    else
+      self.rate = 0;
+    end
+    puts "RATE #{self.rate}"
   end
 end

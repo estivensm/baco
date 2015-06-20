@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :bank_accounts, except: [:edit, :update, :destroy] do
-    resources :transactions, shallow: true, only: [:new, :create, :index]
+    resources :transactions, shallow: true, only: [:new, :create, :index, :destroy]
     put :rates, on: :collection
   end
 

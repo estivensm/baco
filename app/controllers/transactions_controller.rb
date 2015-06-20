@@ -14,7 +14,7 @@ class TransactionsController < ApplicationController
     @bank_account = BankAccount.find(params[:bank_account_id])
     @transaction = @bank_account.transactions.build(transaction_params)
 
-    if @transaction.generar
+    if @transaction.save
       redirect_to @bank_account
     else
       @label = @transaction.label
@@ -25,7 +25,7 @@ class TransactionsController < ApplicationController
   def destroy
     #DELETE /bank_accounts/:bank_account_id/transactions/:id
     @transaction = Transaction.find(params[:id])
-    @transaction.rollback
+    @transaction.destroy
     redirect_to bank_account_transactions_path(@transaction.bank_account)
   end
 

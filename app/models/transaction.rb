@@ -2,6 +2,8 @@ class Transaction < ActiveRecord::Base
   belongs_to :bank_account
   validates_numericality_of :amount, greater_than_or_equal_to: 0
   validate :less_than_balance
+  after_destroy :rollback
+  after_create :generar
 
   def generar
     case self.label
@@ -11,7 +13,7 @@ class Transaction < ActiveRecord::Base
       self.bank_account.retirar(self.amount)
     end
 
-    save && self.bank_account.save
+    self.bank_account.save
   end
 
   def rollback
@@ -22,7 +24,7 @@ class Transaction < ActiveRecord::Base
       self.bank_account.depositar(self.amount)
     end
 
-    destroy && self.bank_account.save
+    self.bank_account.save
   end
 
   def amount_decorado

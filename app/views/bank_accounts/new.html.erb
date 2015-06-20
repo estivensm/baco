@@ -3,7 +3,7 @@
 <%= form_for @account do |f| %>
   <div>
     <%= f.label :client_id, "Cliente ID" %>
-    <%= f.select :client_id, Client.pluck(:name, :id) %>
+    <%= f.select :client_id, Client.pluck(:full_name, :id) %>
   </div>
   <div>
     <%= f.label :balance %>
@@ -12,6 +12,10 @@
   <div>
     <%= f.label :currency %>
     <%= f.select :currency, currency_availables %>
+  </div>
+  <div>
+    <%= f.label :account_type, "Tipo" %>
+    <%= f.select :account_type, types_availables %>
   </div>
   <div>
     <%= f.submit %>
