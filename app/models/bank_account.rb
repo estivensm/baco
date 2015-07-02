@@ -7,6 +7,14 @@ class BankAccount < ActiveRecord::Base
   validates_numericality_of :balance, greater_than_or_equal_to: 0
   before_save :set_rate_segun_tipo
 
+  default_scope { order(created_at: :desc) }
+  scope :normales, -> { where(account_type: "Normal") }
+  scope :vips, -> { where(account_type: "Vip") }
+  scope :plazos, -> { where(account_type: "Plazo") }
+  scope :cheques, -> { where(account_type: "Cheques") }
+
+  scope :by_currency, -> (currency) {where(currency: currency)}
+
   def depositar(monto)
     self.balance = self.balance + monto
   end

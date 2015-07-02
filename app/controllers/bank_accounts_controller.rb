@@ -1,7 +1,7 @@
 class BankAccountsController < ApplicationController
 
   def index
-    @accounts = BankAccount.includes(:client).order(created_at: :desc)
+    @accounts = BankAccount.includes(:client)
   end
 
   def show
