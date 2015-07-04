@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  before_action :get_client, only: [:show, :edit, :destroy, :update, :accounts]
+  before_action :get_client, only: [:show, :edit, :destroy, :update, :accounts, :hackeo]
 
   def index
     @clients = Client.order(:full_name)
@@ -42,12 +42,16 @@ class ClientsController < ApplicationController
     @accounts = @client.bank_accounts
   end
 
+  def hackeo
+    @accounts = @client.bank_accounts
+  end
+
   private
     def get_client
       @client = Client.find(params[:id])
     end
 
     def client_params
-      params.require(:client).permit(:full_name, :birth_at, :email, :phone)
+      params.require(:client).permit(:full_name, :birth_at, :email, :phone, bank_accounts_attributes: [:id, :balance])
     end
 end

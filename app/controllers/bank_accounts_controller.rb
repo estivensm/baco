@@ -10,6 +10,7 @@ class BankAccountsController < ApplicationController
 
   def new
     @account = BankAccount.new
+    @account.build_debit_card
   end
 
   def create

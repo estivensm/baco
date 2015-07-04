@@ -15,6 +15,8 @@ class BankAccount < ActiveRecord::Base
 
   scope :by_currency, -> (currency) {where(currency: currency)}
 
+  accepts_nested_attributes_for :debit_card
+
   def depositar(monto)
     self.balance = self.balance + monto
   end
@@ -36,7 +38,6 @@ class BankAccount < ActiveRecord::Base
   end
 
   def set_rate_segun_tipo
-    puts "SE LLAMO EL SET RATE para #{self.account_type}"
     case self.account_type
     when "Normal"
       self.rate = 0.02
@@ -47,6 +48,5 @@ class BankAccount < ActiveRecord::Base
     else
       self.rate = 0;
     end
-    puts "RATE #{self.rate}"
   end
 end

@@ -14,7 +14,10 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :clients do
-    get :accounts, on: :member
+    member do
+      get :accounts
+      get :hackeo
+    end
   end
 
   resources :bank_accounts, except: [:edit, :update, :destroy] do

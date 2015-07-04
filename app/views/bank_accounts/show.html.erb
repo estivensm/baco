@@ -19,6 +19,10 @@
   <strong>Tasa Interes: </strong>
   <%= @account.rate_decorado %>
 </p>
+<p>
+  <strong>Tarjeta de debito asociada:</strong>
+  <%= @account.debit_card.decorate %>
+</p>
 <%= link_to "Cuentas Bancarias", bank_accounts_path %>
 <%= link_to "Transacciones", bank_account_transactions_path(@account) %>
 <%= link_to "Depositar", new_bank_account_transaction_path(@account, label: "Deposito") %>
