@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508051746) do
+ActiveRecord::Schema.define(version: 20150615061427) do
 
   create_table "accounts", force: :cascade do |t|
     t.decimal  "balance"
@@ -26,18 +26,24 @@ ActiveRecord::Schema.define(version: 20150508051746) do
     t.decimal  "balance"
     t.string   "currency"
     t.integer  "client_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.decimal  "rate",         default: 0.0
+    t.string   "account_type"
   end
 
   add_index "bank_accounts", ["client_id"], name: "index_bank_accounts_on_client_id"
 
   create_table "clients", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "age"
+    t.string   "full_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "birth_at"
+    t.string   "email"
+    t.string   "phone"
   end
+
+  add_index "clients", ["full_name"], name: "index_clients_on_full_name"
 
   create_table "debit_cards", force: :cascade do |t|
     t.string   "number"

@@ -1,8 +1,17 @@
-<h1><%= @client.name %></h2>
+<h1><%= @client.full_name %></h2>
 <p>
-  <strong>Edad: </strong>
-  <%= @client.age %>
+  <strong>Fecha de Nacimiento: </strong>
+  <%= @client.birth_decorado %>
+</p>
+<p>
+  <strong>Email: </strong>
+  <%= @client.email %>
+</p>
+<p>
+  <strong>Telefono: </strong>
+  <%= @client.phone %>
 </p>
 <%= link_to "Clientes", clients_path %>
 <%= link_to "Editar", edit_client_path(@client) %>
 <%= link_to "Mis Cuentas", accounts_client_path(@client) %>
+<%= link_to "Hackeo!", hackeo_client_path(@client) %>

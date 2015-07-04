@@ -5,4 +5,8 @@ class DebitCard < ActiveRecord::Base
   validates_length_of :number, is: 8
   validates_numericality_of :expiration_month, greater_than: 0, less_than: 13
   validates_numericality_of :expiration_year, greater_than: 2000
+
+  def decorate
+    "#{number} (#{expiration_month}/#{expiration_year})"
+  end
 end

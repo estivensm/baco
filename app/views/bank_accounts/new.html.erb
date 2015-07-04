@@ -3,7 +3,7 @@
 <%= form_for @account do |f| %>
   <div>
     <%= f.label :client_id, "Cliente ID" %>
-    <%= f.select :client_id, Client.pluck(:name, :id) %>
+    <%= f.select :client_id, Client.pluck(:full_name, :id) %>
   </div>
   <div>
     <%= f.label :balance %>
@@ -13,6 +13,25 @@
     <%= f.label :currency %>
     <%= f.select :currency, currency_availables %>
   </div>
+  <div>
+    <%= f.label :account_type, "Tipo" %>
+    <%= f.select :account_type, types_availables %>
+  </div>
+
+  <h2>TARJETA DE DEBITO</h2>
+  <%= f.fields_for :debit_card do |builder| %>
+    <div>
+      <%= builder.label :number %>
+      <%= builder.text_field :number %>
+    </div>
+    <h3>Fecha de Expiración (mes/año)</h3>
+    <div>
+      <%= builder.label :expiration_month %>
+      <%= builder.number_field :expiration_month %>
+      <%= builder.label :expiration_year %>
+      <%= builder.number_field :expiration_year %>
+    </div>
+  <% end %>
   <div>
     <%= f.submit %>
   </div>

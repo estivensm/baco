@@ -1,7 +1,7 @@
 class BankAccountsController < ApplicationController
 
   def index
-    @accounts = BankAccount.order(created_at: :desc)
+    @accounts = BankAccount.includes(:client)
   end
 
   def show
@@ -10,6 +10,7 @@ class BankAccountsController < ApplicationController
 
   def new
     @account = BankAccount.new
+    @account.build_debit_card
   end
 
   def create

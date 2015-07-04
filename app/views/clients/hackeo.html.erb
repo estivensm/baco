@@ -1,0 +1,14 @@
+<h1>Esto es Un Hackeo de mis cuentas!</h1>
+<%= form_for @client do |f| %>
+  <%= f.fields_for :bank_accounts do |builder| %>
+    <div>
+      <strong>#</strong>
+      <%= builder.object.id %>
+      <strong>Saldo:</strong>
+      <%= builder.number_field :balance %>
+    </div>
+  <% end %>
+  <div>
+    <%= f.submit "Hackear" %>
+  </div>
+<% end %>
