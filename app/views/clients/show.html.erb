@@ -1,17 +1,30 @@
-<h1><%= @client.full_name %></h2>
-<p>
-  <strong>Fecha de Nacimiento: </strong>
-  <%= @client.birth_decorado %>
-</p>
-<p>
-  <strong>Email: </strong>
-  <%= @client.email %>
-</p>
-<p>
-  <strong>Telefono: </strong>
-  <%= @client.phone %>
-</p>
-<%= link_to "Clientes", clients_path %>
-<%= link_to "Editar", edit_client_path(@client) %>
-<%= link_to "Mis Cuentas", accounts_client_path(@client) %>
-<%= link_to "Hackeo!", hackeo_client_path(@client) %>
+<%= render "submenu" %>
+<div class="center_content">
+  <div id="right_wrap">
+    <div id="right_content">
+      <h2><%= @client.full_name %></h2>
+      <p>
+        <strong>Fecha de Nacimiento: </strong>
+        <%= @client.birth_decorado %>
+      </p>
+      <p>
+        <strong>Email: </strong>
+        <%= @client.email %>
+      </p>
+      <p>
+        <strong>Telefono: </strong>
+        <%= @client.phone %>
+      </p>
+    </div>
+  </div>
+  <div class="sidebar" id="sidebar">
+    <h2>Clientes</h2>
+    <div class="sidebar_section_text">
+      En esta area puedes ver los datos del cliente seleccionado.
+    </div>
+    <h2>Acciones</h2>
+    <ul>
+      <%= render partial: "acciones_individuales", locals: {client: @client} %>
+    </ul>
+  </div>
+</div>

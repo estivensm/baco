@@ -1,22 +1,25 @@
 <%= render partial: "shared/errors", locals: {obj: @client} %>
-<%= form_for @client do |f| %>
-  <div>
-    <%= f.label :full_name, "Nombre Completo" %>
-    <%= f.text_field :full_name %>
-  </div>
-  <div>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div>
-    <%= f.label :phone, "Telefono" %>
-    <%= f.text_field :phone %>
-  </div>
-  <div>
-    <%= f.label :birth_at, "Nacimiento" %>
-    <%= f.datetime_select :birth_at %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+ <div class="form">
+  <%= form_for @client do |f| %>
+    <div class="form_row">
+      <%= f.label :full_name, "Nombre Completo" %>
+      <%= f.text_field :full_name, class: "form_input"  %>
+    </div>
+    <div class="form_row">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form_input" %>
+    </div>
+    <div class="form_row">
+      <%= f.label :phone, "Telefono" %>
+      <%= f.text_field :phone, class: "form_input" %>
+    </div>
+    <div class="form_row">
+      <%= f.label :birth_at, "Nacimiento" %>
+      <%= f.datetime_select :birth_at %>
+    </div>
+    <div class="form_row">
+      <%= f.submit class: "form_submit" %>
+      <%= link_to "Cancelar", clients_path, class: "button red" %>
+    </div>
+  <% end %>
+</div>

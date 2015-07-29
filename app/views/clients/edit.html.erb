@@ -1,5 +1,20 @@
-<h1>Editar Cliente</h1>
-<%= render "form" %>
-<p>
-  <%= link_to "Borrar", @client, method: :delete, data: { confirm: "Seguro?" } %>
-</p>
+<%= render "submenu" %>
+<div class="center_content">
+  <div id="right_wrap">
+    <div id="right_content">
+      <h2>Editar Cliente</h2>
+      <%= render "form" %>
+    </div>
+  </div>
+  <div class="sidebar" id="sidebar">
+    <h2>Clientes</h2>
+    <div class="sidebar_section_text">
+      En esta area puedes editar los datos del cliente seleccionado.
+    </div>
+    <h2>Acciones</h2>
+    <ul>
+      <li><%= link_to "Borrar", @client, method: :delete, data: { confirm: "Seguro?" } %></li>
+      <%= render partial: "acciones_individuales", locals: {client: @client} %>
+    </ul>
+  </div>
+</div>

@@ -1,14 +1,33 @@
-<h1>Esto es Un Hackeo de mis cuentas!</h1>
-<%= form_for @client do |f| %>
-  <%= f.fields_for :bank_accounts do |builder| %>
-    <div>
-      <strong>#</strong>
-      <%= builder.object.id %>
-      <strong>Saldo:</strong>
-      <%= builder.number_field :balance %>
+<%= render "submenu" %>
+<div class="center_content">
+  <div id="right_wrap">
+    <div id="right_content">
+      <h2>Hackeo de Cuentas de <%= @client.full_name %></h2>
+       <div class="form">
+        <%= form_for @client do |f| %>
+          <%= f.fields_for :bank_accounts do |builder| %>
+            <div class="form_row">
+              <strong>#</strong>
+              <%= builder.object.id %>
+              <strong>Saldo:</strong>
+              <%= builder.number_field :balance %>
+            </div>
+          <% end %>
+          <div class="form_row">
+            <%= f.submit "Hackear", class: "form_submit" %>
+          </div>
+        <% end %>
+       </div>
     </div>
-  <% end %>
-  <div>
-    <%= f.submit "Hackear" %>
   </div>
-<% end %>
+  <div class="sidebar" id="sidebar">
+    <h2>Clientes</h2>
+    <div class="sidebar_section_text">
+      En esta area puedes editar los saldos de las cuentas del cliente seleccionado.
+    </div>
+    <h2>Acciones</h2>
+    <ul>
+      <li><%= link_to "Regresar", @client %></li>
+    </ul>
+  </div>
+</div>

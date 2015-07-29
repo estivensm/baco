@@ -2,13 +2,35 @@
 <html>
 <head>
   <title>Bank</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <link href='http://fonts.googleapis.com/css?family=Belgrano' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<%= yield %>
+  <div id="panelwrap">
+    <div class="header">
+      <div class="title"><%= link_to "RoR Bank", root_path %></div>
 
+      <div class="header_right">Welcome Admin, <a href="#" class="settings">Settings</a> <a href="#" class="logout">Logout</a> </div>
+
+      <div class="menu">
+        <ul>
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Clientes", clients_path %></li>
+          <li><%= link_to "Cuentas Bancarias", bank_accounts_path %></li>
+        </ul>
+      </div>
+    </div>
+
+    <%= yield %>
+    <div class="clear"></div>
+    <div class="footer">
+      Panelo - Free Admin Template by <a href="htpp://csstemplatesmarket.com" target="_blank">CSSTemplatesMarket</a>
+    </div>
+</div>
+  </div>
 </body>
 </html>
