@@ -1,4 +1,5 @@
-<tr>
+
+<tr class=<%= @table_class ? "odd" : "even" %> >
   <td><%= link_to client.id, client %></td>
   <td><%= client.full_name %></td>
   <td><%= client.birth_decorado %></td>
@@ -9,3 +10,4 @@
   </td>
   <td><%= client.bank_accounts.count %></td>
 </tr>
+<% @table_class = !@table_class %>

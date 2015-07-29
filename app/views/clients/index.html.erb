@@ -1,19 +1,38 @@
-<h1>Clientes</h1>
-<% if Client.any? %>
-  <h2>Listado</h2>
-  <table border="1">
-    <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-      <th>Fecha de Nacimiento</th>
-      <th>Email</th>
-      <th>Contador de cuentas bancarias</th>
-    </tr>
-    <%= render @clients %>
-  </table>
-<% else %>
-  <em>No hay ningun cliente en la tabla</em>
-<% end %>
-<p>
-<%= link_to "Nuevo Cliente", new_client_path %>
-</p>
+<%= render "submenu" %>
+<div class="center_content">
+  <div id="right_wrap">
+    <div id="right_content">
+      <h2>Listado de Clientes</h2>
+      <% if Client.any? %>
+        <table id="rounded-corner">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Fecha de Nacimiento</th>
+              <th>Email</th>
+              <th>Contador de cuentas bancarias</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td colspan="5">Clientes Agregados al Sistema</td>
+            </tr>
+          </tfoot>
+          <tbody>
+            <%= render @clients %>
+          </tbody>
+        </table>
+      <% else %>
+        <em>No hay ningun cliente en la tabla</em>
+      <% end %>
+    </div>
+  </div>
+  <div class="sidebar" id="sidebar">
+    <h2>Clientes</h2>
+    <div class="sidebar_section_text">
+      En esta area puedes ver los clientes creados ademas de poder agregar nuevos. Usa el Link de 'Enviar Correo' para enviarles directamente un email al cliente seleccionado.
+    </div>
+  </div>
+</div>
+

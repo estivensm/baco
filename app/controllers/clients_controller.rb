@@ -3,6 +3,7 @@ class ClientsController < ApplicationController
 
   def index
     @clients = Client.order(:full_name)
+    @table_class = true
   end
 
   def show

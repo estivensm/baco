@@ -1,12 +1,35 @@
-<h1>Mis Cuentas Bancarias</h1>
-<h2>Listado</h2>
-<table border="1">
-  <tr>
-    <th>Id</th>
-    <th>Cliente</th>
-    <th>Balance</th>
-    <th>Currency</th>
-  </tr>
-  <%= render partial: "bank_accounts/bank_account", collection: @accounts, as: :account %>
-</table>
-<%= link_to "Regresar", @client %>
+<%= render "submenu" %>
+<div class="center_content">
+  <div id="right_wrap">
+    <div id="right_content">
+      <h2><%= @client.full_name %></h2>
+      <table id="rounded-corner">
+        <thead>
+          <th>Id</th>
+          <th>Cliente</th>
+          <th>Balance</th>
+          <th>Currency</th>
+          <th>Tipo</th>
+        </thead>
+        <tfoot>
+          <tr>
+            <td colspan="5">Listas de Cuentas Bancarias propias</td>
+          </tr>
+        </tfoot>
+        <tbody>
+          <%= render partial: "bank_accounts/bank_account", collection: @accounts, as: :account %>
+        </tbody>
+      </table>
+  </div>
+  </div>
+  <div class="sidebar" id="sidebar">
+    <h2>Clientes</h2>
+    <div class="sidebar_section_text">
+      En esta area puedes ver las cuentas bancarias del cliente seleccionado.
+    </div>
+    <h2>Acciones</h2>
+    <ul>
+      <li><%= link_to "Regresar", @client %></li>
+    </ul>
+  </div>
+</div>
