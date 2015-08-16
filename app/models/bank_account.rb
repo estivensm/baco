@@ -37,6 +37,10 @@ class BankAccount < ActiveRecord::Base
     "#{rate*100}%"
   end
 
+  def balance_decorado
+    "$ %.2f" % balance
+  end
+
   def set_rate_segun_tipo
     case self.account_type
     when "Normal"
