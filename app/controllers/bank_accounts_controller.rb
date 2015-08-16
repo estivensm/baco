@@ -25,7 +25,7 @@ class BankAccountsController < ApplicationController
 
   def rates
     BankAccount.generar_intereses
-    redirect_to bank_accounts_path
+    render json: {msg: "Se registraron los intereses"}, status: 200
   end
 
   protected
