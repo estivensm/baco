@@ -2,6 +2,19 @@ class BankAccountsController < ApplicationController
 
   def index
     @accounts = BankAccount.includes(:client)
+
+    if params[:query].present?
+      q = params[:query]
+      @accounts = @accounts.joins(:client)
+        .where("bank_accounts.id LIKE '%#{q}%' OR
+          clients.full_name LIKE '%#{q}%' OR
+          bank_accounts.account_type LIKE '%#{q}%' OR
+          bank_accounts.currency LIKE '%#{q}%'")
+    end
+
+    if request.xhr?
+      render partial: "table", locals: {accounts: @accounts}, status: 200
+    end
   end
 
   def show
@@ -25,7 +38,8 @@ class BankAccountsController < ApplicationController
 
   def rates
     BankAccount.generar_intereses
-    render json: {msg: "Se registraron los intereses"}, status: 200
+    @accounts = BankAccount.includes(:client)
+    render partial: "table", locals: {accounts: @accounts}, status: 200
   end
 
   protected
