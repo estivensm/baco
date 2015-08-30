@@ -2,7 +2,7 @@
 <div class="center_content">
   <div id="right_wrap">
     <div id="right_content">
-      <h2><%= @client.full_name %></h2>
+      <h2>Listas de Cuentas Bancarias de <%= @client.full_name %></h2>
       <table id="rounded-corner">
         <thead>
           <th>Id</th>
@@ -11,15 +11,12 @@
           <th>Currency</th>
           <th>Tipo</th>
         </thead>
-        <tfoot>
-          <tr>
-            <td colspan="5">Listas de Cuentas Bancarias propias</td>
-          </tr>
-        </tfoot>
         <tbody>
           <%= render partial: "bank_accounts/bank_account", collection: @accounts, as: :account %>
         </tbody>
       </table>
+      <h2>Grafica de Transacciones</h2>
+      <div id="graph-container" data-graph-series=<%= @client.transactions_graph_series %>></div>
   </div>
   </div>
   <div class="sidebar" id="sidebar">

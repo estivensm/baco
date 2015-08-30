@@ -22,7 +22,7 @@
   </p>
   <p>
     <strong>Tarjeta de debito asociada:</strong>
-    <%= @account.debit_card.decorate %>
+    <%= @account.debit_card.try(:decorate) %>
   </p>
   <%= link_to "Cuentas Bancarias", bank_accounts_path %>
   <%= link_to "Transacciones", bank_account_transactions_path(@account) %>

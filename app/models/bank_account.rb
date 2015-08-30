@@ -28,7 +28,10 @@ class BankAccount < ActiveRecord::Base
   def self.generar_intereses
     collection = all
     collection.each do |account|
-      account.balance = account.balance + account.balance * 0.05
+      amount = account.balance * 0.05
+      account.balance = account.balance + amount
+      #Generar una transaccion
+      account.transactions.create(label: "Interes", amount: amount)
       account.save
     end
   end
