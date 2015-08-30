@@ -1,20 +1,27 @@
-<h1>Cuentas Bancarias</h1>
-<% if @accounts.any? %>
-  <h2>Listado</h2>
-  <table border="1">
-    <tr>
-      <th>Id</th>
-      <th>Cliente</th>
-      <th>Balance</th>
-      <th>Currency</th>
-      <th>Tipo</th>
-    </tr>
-    <%= render partial: "bank_account", collection: @accounts, as: :account %>
-  </table>
-<% else %>
-  <em>No hay ninguna cuenta creada</em>
-<% end %>
-<p>
-<%= link_to "Nueva Cuenta Bancaria", new_bank_account_path %>
-<%= link_to "Generar Intereses", rates_bank_accounts_path, method: :put %>
-</p>
+<div class="center_content">
+
+  <h2>Cuentas Bancarias</h2>
+  <% if @accounts.any? %>
+
+    <div class="form">
+      <%= form_tag bank_accounts_path, class: "js-filter-form", remote: true, method: :get do %>
+        <div class="form_row">
+          <%= text_field_tag :query, nil, placeholder: "Ingrese un texto para filtrar", class: "form_input" %>
+          <%= submit_tag "Filtrar", class: "form_submit" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="js-filtered-table">
+      <%= render partial: "table", locals: {accounts: @accounts} %>
+    </div>
+
+  <% else %>
+    <em>No hay ninguna cuenta creada</em>
+  <% end %>
+  <p>
+  <%= link_to "Nueva Cuenta Bancaria", new_bank_account_path %>
+  <%= link_to "Generar Intereses", rates_bank_accounts_path, method: :put, remote: true, class: "js_intereses" %>
+  </p>
+
+</div>

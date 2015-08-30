@@ -7,6 +7,7 @@ class Transaction < ActiveRecord::Base
 
   scope :depositos, -> {where(label: "Deposito")}
   scope :retiros, -> {where(label: "Retiro")}
+  scope :intereses, -> {where(label: "Interes")}
 
   def generar
     case self.label
