@@ -25,6 +25,13 @@ Rails.application.routes.draw do
     put :rates, on: :collection
   end
 
+  resources :users, only: [:new, :create]
+  get "/account" => "users#show"
+
+  get "/login" => "sessions#new"
+  post "/login" => "sessions#create"
+  delete "/logout" => "sessions#destroy"
+
   # Example resource route with options:
   #   resources :products do
   #     member do
