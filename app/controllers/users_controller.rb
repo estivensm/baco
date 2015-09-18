@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      NotificationsMailer.welcome(@user).deliver_now
       login(@user)
     else
       render :new

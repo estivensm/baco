@@ -1,0 +1,9 @@
+<h2>Has Recibido un Deposito a tu cuenta #<%= @account.id %>!</h2>
+<p>Hola <%= @account.client.full_name %>, te confirmamos el credito a tu
+cuenta por el monto de <strong>Lps. <%= @transaction.amount %></strong>
+</p>
+<p>
+  El Deposito fue hecho por: <%= @transaction.responsible %>
+<p>
+<em>Fue ejecutado por: <%= @user.name %></em>
+</p>
