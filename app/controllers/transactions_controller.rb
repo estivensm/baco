@@ -15,6 +15,7 @@ class TransactionsController < ApplicationController
     @transaction = @bank_account.transactions.build(transaction_params)
 
     if @transaction.save
+      send_email
       redirect_to @bank_account
     else
       @label = @transaction.label
@@ -30,6 +31,16 @@ class TransactionsController < ApplicationController
   end
 
   private
+
+    def send_email
+      case @transaction.label
+      when "Deposito"
+        NotificationsMailer.deposito(current_user, @transaction).deliver_now
+      when "Retiro"
+        #TODO: Hagan aqui el de retirar
+      end
+    end
+
     def transaction_params
       params.require(:transaction).permit(:responsible, :amount, :label)
     end

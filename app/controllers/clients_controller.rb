@@ -1,8 +1,6 @@
 class ClientsController < ApplicationController
   before_action :get_client, only: [:show, :edit, :destroy, :update, :accounts, :hackeo]
 
-  http_basic_authenticate_with name: "messi", password: "cursosdecomputacion", except: :index
-
   def index
     @clients = Client.order(:full_name)
     @table_class = true
