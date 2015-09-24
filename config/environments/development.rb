@@ -48,4 +48,6 @@ Rails.application.configure do
     password:             'password',
     authentication:       'plain',
     enable_starttls_auto: true  }
-  end
+
+  config.site_name = "RoR Bank"
+end
