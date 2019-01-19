@@ -5,9 +5,9 @@ class Transaction < ActiveRecord::Base
   after_destroy :rollback
   after_create :generar
 
-  scope :depositos, -> {where(label: "Deposito")}
-  scope :retiros, -> {where(label: "Retiro")}
-  scope :intereses, -> {where(label: "Interes")}
+  scope :depositos, => {where(label: "Deposito")}
+  scope :retiros, => {where(label: "Retiro")}
+  scope :intereses, => {where(label: "Interes")}
 
   def generar
     case self.label
